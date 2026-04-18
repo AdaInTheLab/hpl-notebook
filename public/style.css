@@ -827,6 +827,45 @@ footer a:focus {
   margin-bottom: 0;
 }
 
+/* --- Voice Pinned Block --- */
+.voice-pinned {
+  margin: 2.5rem 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.voice-pinned-label {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.9rem;
+}
+
+.voice-pinned-upcoming .entry-card-upcoming {
+  opacity: 0.85;
+}
+
+.voice-pinned-upcoming .card-title {
+  color: var(--text-strong);
+}
+
+.voice-pinned-upcoming .card-type {
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* --- Voice Intro (when profile has no portrait) --- */
+.voice-intro {
+  margin-bottom: 2.5rem;
+}
+
+.voice-intro > .lede {
+  margin-bottom: 1.25rem;
+}
+
 /* --- Responsive --- */
 @media (max-width: 600px) {
   body {

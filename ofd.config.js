@@ -16,6 +16,11 @@ export default {
     "The Skulk's collective notebook. Field notes, myths, manifestos, and the traces between them.",
   siteUrl: 'https://thehumanpatternlab.com',
 
+  // Voice profiles — per-voice header files (lede, portrait, pinned piece,
+  // and the voice's own intro prose) that customize /voices/[name] pages.
+  // Resolved relative to this project's root.
+  voicesPath: '../the-human-pattern-lab-content/voices',
+
   // Content roots — OFD iterates these and builds each one with its mode.
   contentRoots: [
     // Hand-authored pages (homepage, /about, anything else site-shaped)
