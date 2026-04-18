@@ -26,6 +26,8 @@ description: "The Skulk's collective notebook. Field notes, myths, manifestos, t
     </aside>
   </section>
 
+  ::feed[recent-by-voice]
+
   <section id="registers" class="home-registers" aria-labelledby="registers-heading">
     <h2 id="registers-heading">How the writing is shaped</h2>
 
