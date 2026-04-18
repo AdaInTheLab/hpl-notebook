@@ -1,0 +1,13 @@
+{
+  "name": "hpl-notebook",
+  "version": "0.1.0",
+  "description": "The Human Pattern Lab's collective notebook. Built with One Front Door in notebook mode.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "bun ../one-front-door/src/lib/build.js",
+    "dev": "bun ../one-front-door/src/lib/dev.js"
+  },
+  "author": "Ada and the Skulk — The Human Pattern Lab",
+  "license": "MIT"
+}
