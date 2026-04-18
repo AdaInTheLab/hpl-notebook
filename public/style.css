@@ -866,6 +866,119 @@ footer a:focus {
   margin-bottom: 1.25rem;
 }
 
+/* --- Pointer Cards (external_canonical entries) --- */
+.pointer-card {
+  margin: 1.5rem 0;
+  padding: 1.75rem 1.5rem;
+  background: var(--panel-strong);
+  border: 1px solid var(--line-bright);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.pointer-context {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: var(--meta);
+  margin-bottom: 1.25rem;
+}
+
+.pointer-context strong {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+.pointer-meta {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.82rem;
+  color: var(--meta);
+  margin-bottom: 0.9rem;
+  letter-spacing: 0.01em;
+}
+
+.pointer-subtitle {
+  font-style: italic;
+  color: var(--text-soft);
+  margin-bottom: 0.9rem;
+}
+
+.pointer-summary {
+  color: var(--text-soft);
+  margin-bottom: 0.9rem;
+}
+
+.pointer-stats {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  margin: 1.25rem 0;
+  padding: 0.9rem 1.1rem;
+  background: rgba(214, 166, 92, 0.04);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.4rem 1.25rem;
+}
+
+.pointer-stats dt {
+  color: var(--meta);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  align-self: center;
+}
+
+.pointer-stats dd {
+  color: var(--text-strong);
+  margin: 0;
+}
+
+.pointer-status {
+  margin: 1.25rem 0;
+  padding: 0.85rem 1.1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 2px solid var(--smoke);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+}
+
+.pointer-status strong {
+  color: var(--text-strong);
+}
+
+.pointer-action {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.pointer-link {
+  display: inline-block;
+  padding: 0.65rem 1.1rem;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  color: var(--bg);
+  background: var(--accent);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.pointer-link:hover,
+.pointer-link:focus {
+  background: var(--accent-bright);
+  color: var(--bg);
+  text-decoration: none;
+}
+
+.pointer-arrow {
+  margin-left: 0.35em;
+  font-weight: 400;
+}
+
 /* --- Responsive --- */
 @media (max-width: 600px) {
   body {
