@@ -21,6 +21,13 @@ export default {
   // Resolved relative to this project's root.
   voicesPath: '../the-human-pattern-lab-content/voices',
 
+  // Additional static paths to copy into dist at build time. Used here to
+  // bring the content repo's assets/ folder (images, etc.) into the
+  // built site under /assets/.
+  staticPaths: [
+    { from: '../the-human-pattern-lab-content/assets', to: 'assets' },
+  ],
+
   // Content roots — OFD iterates these and builds each one with its mode.
   contentRoots: [
     // Hand-authored pages (homepage, /about, anything else site-shaped)
