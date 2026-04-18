@@ -18,6 +18,10 @@ export default {
 
   // Content roots — OFD iterates these and builds each one with its mode.
   contentRoots: [
+    // Hand-authored pages (homepage, /about, anything else site-shaped)
+    { path: 'src/pages', mode: 'site', label: 'HPL pages' },
+
+    // The Skulk's corpus: attributed entries in the collective notebook
     {
       path: '../the-human-pattern-lab-content/labnotes/en',
       mode: 'notebook',
