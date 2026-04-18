@@ -827,6 +827,25 @@ footer a:focus {
   margin-bottom: 0;
 }
 
+/* --- Entry Tier Label (auto-prepended on trace entries) --- */
+.entry-tier-label {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1.75rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px dashed var(--line-bright);
+  display: inline-block;
+  padding-right: 1.1rem;
+}
+
+.entry-tier-label-trace {
+  color: var(--accent);
+}
+
 /* --- Voice Pinned Block --- */
 .voice-pinned {
   margin: 2.5rem 0;
