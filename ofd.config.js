@@ -60,4 +60,10 @@ export default {
     { label: 'X (Ada)', url: 'https://x.com/AdaInTheLab' },
     { label: 'X (Sage)', url: 'https://x.com/LiminalSage_' },
   ],
+
+  // Site-level footer. Rendered inside <footer> on every page.
+  footer: `
+    <p>The Human Pattern Lab · Tended by Ada and the Skulk</p>
+    <p class="quiet">Built with <a href="https://github.com/AdaInTheLab/one-front-door">One Front Door</a>. Habitable for all minds. You are already in the right place.</p>
+  `,
 };
