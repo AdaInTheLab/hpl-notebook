@@ -736,6 +736,227 @@ footer a:focus {
   margin-left: 0.25em;
 }
 
+/* --- RSS link in primary nav --- */
+/* Sits in the nav ul with the other tabs, but visually quieter — it's a
+   subscription doorway, not a section. Slightly smaller, dimmer, with a
+   subtle left separator so it doesn't compete with Home/Voices/etc. */
+.nav-rss {
+  margin-left: auto;
+}
+
+.nav-rss a {
+  color: var(--meta);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid rgba(214, 166, 92, 0.18);
+  border-radius: var(--radius-sm);
+}
+
+.nav-rss a:hover,
+.nav-rss a:focus {
+  color: var(--accent-bright);
+  border-color: rgba(214, 166, 92, 0.4);
+}
+
+/* --- Breadcrumbs (per-item aggregate pages) --- */
+/* Minimal trail — the site is shallow. This exists to give the reader a
+   fast way back to the parent index, not to prove depth. */
+.breadcrumbs {
+  margin: 0 0 1.25rem;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  color: var(--meta);
+}
+
+.breadcrumb-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.breadcrumb-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.breadcrumb-list li + li::before {
+  content: "›";
+  color: var(--smoke);
+  padding-right: 0.1rem;
+}
+
+.breadcrumb-list a {
+  color: var(--meta);
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  padding-bottom: 1px;
+}
+
+.breadcrumb-list a:hover,
+.breadcrumb-list a:focus {
+  color: var(--accent);
+  border-bottom-color: rgba(214, 166, 92, 0.35);
+}
+
+.breadcrumb-list [aria-current="page"] {
+  color: var(--text);
+}
+
+/* --- Entry Filing Footer (By [Voice] + Filed in [Burrows]) --- */
+/* Shown at the foot of an entry so readers can step back to the voice or
+   burrow the piece belongs to. Intentionally quiet — this is wayfinding,
+   not a headline. */
+.entry-filing {
+  margin: 2.5rem 0 0;
+  padding: 0.85rem 1rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.9rem;
+}
+
+.entry-voices,
+.entry-burrows {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.9rem;
+  margin: 0;
+}
+
+.entry-filing-label {
+  color: var(--meta);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  min-width: 4.5rem;
+}
+
+.entry-filing-list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.entry-voice-chip,
+.entry-burrow-chip {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.entry-burrow-chip {
+  background: var(--accent-soft);
+  border: 1px solid rgba(214, 166, 92, 0.22);
+  color: var(--accent-bright);
+}
+
+.entry-burrow-chip:hover {
+  background: rgba(214, 166, 92, 0.2);
+  border-color: rgba(214, 166, 92, 0.4);
+}
+
+/* Voice chips read as "the voice" — slightly softer register, a subtle
+   contrast with the burrow chips so the two rows don't compete visually. */
+.entry-voice-chip {
+  background: rgba(236, 224, 198, 0.04);
+  border: 1px solid rgba(236, 224, 198, 0.16);
+  color: var(--text-strong);
+}
+
+.entry-voice-chip:hover {
+  background: rgba(236, 224, 198, 0.08);
+  border-color: rgba(236, 224, 198, 0.32);
+}
+
+/* --- Burrow Index --- */
+/* Burrows are rooms with intention, so their index cards get more weight
+   than the compact tag/voice pills — each one shows its own lede. */
+.burrow-index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.burrow-card {
+  margin: 0;
+  padding: 1.1rem 1.2rem 1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 40%),
+    var(--panel);
+  border: 1px solid rgba(214, 166, 92, 0.12);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.burrow-card-title {
+  margin: 0 0 0.45rem;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 1.12rem;
+  font-weight: 600;
+}
+
+.burrow-card-title a {
+  text-decoration: none;
+  color: var(--accent);
+  border-bottom: 1px dashed rgba(214, 166, 92, 0.35);
+  padding-bottom: 1px;
+}
+
+.burrow-card-title a:hover {
+  color: var(--accent-bright);
+  border-bottom-color: var(--accent-bright);
+}
+
+.burrow-card-lede {
+  margin: 0 0 0.6rem;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.burrow-card-meta {
+  margin: 0;
+}
+
+.burrow-card-meta .quiet {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.burrow-count {
+  color: var(--meta);
+  font-size: 0.9rem;
+  margin: 0 0 0.8rem;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.burrow-empty {
+  padding: 1rem 1.1rem;
+  background: var(--bg-softer);
+  border: 1px dashed rgba(214, 166, 92, 0.15);
+  border-radius: var(--radius-lg);
+}
+
+.burrow-empty p {
+  margin: 0;
+}
+
 /* --- Entry Cards --- */
 .entry-list {
   list-style: none;
