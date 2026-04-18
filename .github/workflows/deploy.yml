@@ -1,0 +1,86 @@
+name: Build and deploy notebook
+
+on:
+  # Push to hpl-notebook main → rebuild and deploy.
+  push:
+    branches: [main]
+  # Content repo sends repository_dispatch when Skulk writing lands
+  # (see the-human-pattern-lab-content/.github/workflows/notify-notebook.yml).
+  repository_dispatch:
+    types: [content-updated]
+  # Manual re-trigger from the Actions tab.
+  workflow_dispatch: {}
+
+# Serialize deploys so two rapid pushes don't race each other over rsync.
+concurrency:
+  group: notebook-deploy
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Three siblings, side by side, matching the local dev layout that
+      # hpl-notebook's ofd.config.js and package.json both assume.
+      - name: Checkout hpl-notebook
+        uses: actions/checkout@v4
+        with:
+          path: hpl-notebook
+
+      - name: Checkout one-front-door (framework)
+        uses: actions/checkout@v4
+        with:
+          repository: AdaInTheLab/one-front-door
+          ref: main
+          path: one-front-door
+
+      - name: Checkout the-human-pattern-lab-content (content)
+        uses: actions/checkout@v4
+        with:
+          repository: AdaInTheLab/the-human-pattern-lab-content
+          ref: main
+          path: the-human-pattern-lab-content
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      # OFD brings the only real deps (marked, gray-matter). hpl-notebook
+      # has none of its own, so we install inside one-front-door.
+      - name: Install OFD dependencies
+        working-directory: one-front-door
+        run: bun install --frozen-lockfile || bun install
+
+      - name: Build the notebook
+        working-directory: hpl-notebook
+        run: bun run build
+
+      - name: Show build output size
+        run: |
+          du -sh hpl-notebook/dist
+          echo "Files: $(find hpl-notebook/dist -type f | wc -l)"
+
+      # Register the private deploy key with the ssh-agent, then rsync
+      # dist/ onto the VPS webroot. --delete keeps stale files from
+      # accumulating across deploys.
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Trust host
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Rsync dist/ to VPS
+        run: |
+          rsync -avz --delete \
+            --exclude='.well-known' \
+            hpl-notebook/dist/ \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}/
+
+      - name: Summary
+        run: |
+          echo "✓ Deployed to https://notebook.thehumanpatternlab.com"
