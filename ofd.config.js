@@ -10,7 +10,27 @@
  * resolved relative to THIS project's root (PROJECT_ROOT in OFD).
  */
 
+// Matomo tracker snippet for site 9 (The Notebook). Raw HTML, injected
+// into every built page's <head> via OFD's customHead hook.
+const matomoSnippet = `
+    <!-- Matomo -->
+    <script>
+      var _paq = window._paq = window._paq || [];
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u = "//analytics.kitsuneden.net/";
+        _paq.push(['setTrackerUrl', u + 'matomo.php']);
+        _paq.push(['setSiteId', '9']);
+        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+        g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+    <!-- End Matomo -->
+`;
+
 export default {
+  customHead: matomoSnippet,
   siteName: 'The Human Pattern Lab',
   siteDescription:
     "The Skulk's collective notebook. Field notes, myths, manifestos, and the traces between them.",
